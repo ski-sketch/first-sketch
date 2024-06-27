@@ -1,23 +1,19 @@
-import random
+from tkinter import *
 
-choices = ["rock", "paper", "scissors"]
+window = Tk()
 
-x = random.choice(choices)
-userchoice = input("please enter rock, paper, or scissors: ")
-while userchoice == "":
-    print("you didn't enter anything")
-    userchoice = input("please enter rock, paper, or scissors: ")
-if userchoice == x:
-    print ("it is a tie")
-elif userchoice =="rock" and x == "scissors":
-    print("you win")
-elif userchoice =="rock" and x =="paper":
-    print("you lose")
-elif userchoice =="paper" and x == "rock":
-    print("you win")
-elif userchoice =="paper" and x == "scissors":
-    print("you lose")
-elif userchoice =="scissors" and x == "rock":
-    print("you lose")
-elif userchoice =="scissors" and x == "paper":
-    print("you win")
+foods = ["Pizza", "Hamburger", "Hotdog", "Pasta", "Soup", "Salad"]
+
+window.title("fav food")
+x = IntVar()
+
+try:
+    for i in range(len(foods)):
+        radiobutton = Radiobutton(window, text = foods[i] , variable = x , value = i)
+        radiobutton.pack(anchor=W)
+except Exception as e:
+    print("error")
+
+window.geometry("400x400")
+
+window.mainloop()
