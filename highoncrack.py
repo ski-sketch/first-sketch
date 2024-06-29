@@ -1,19 +1,37 @@
 from tkinter import *
 
 window = Tk()
+window.geometry('500x500')
 
-foods = ["Pizza", "Hamburger", "Hotdog", "Pasta", "Soup", "Salad"]
 
-window.title("fav food")
-x = IntVar()
+canvas = Canvas(window, width = 500, height = 500, bg = 'white')
+oval = canvas.create_oval(0, 0, 25, 25, fill='black')
+canvas.pack()
 
-try:
-    for i in range(len(foods)):
-        radiobutton = Radiobutton(window, text = foods[i] , variable = x , value = i)
-        radiobutton.pack(anchor=W)
-except Exception as e:
-    print("error")
+def w(event):
+    x=0
+    y=-5
+    canvas.move(oval, x, y)
 
-window.geometry("400x400")
+def a(event):
+    x=-5
+    y=0
+    canvas.move(oval, x, y)
+
+def s(event):
+    x=0
+    y=5
+    canvas.move(oval, x, y)
+
+def d(event):
+    x=5
+    y=0
+    canvas.move(oval, x, y)
+
+window.bind('<w>',w)
+window.bind('<a>',a)
+window.bind('<s>',s)
+window.bind('<d>',d)
+
 
 window.mainloop()
